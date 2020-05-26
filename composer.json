@@ -1,0 +1,6 @@
+{
+    "require": {
+        "carbon/carbon": "^2.34",
+        "ngiusti/random-string-generator": "^1.0"
+    }
+}

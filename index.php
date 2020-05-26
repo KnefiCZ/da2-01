@@ -6,25 +6,21 @@
 </head>
 <body>
     <?php 
+        $randomProducts = file('random_products.txt');
+        $randomProductsCount = count($randomProducts);
+        var_dump($randomProductsCount);
+        $randomDescriptions = file('random_descriptions.txt');
+        $randomDescriptionsCount = count($randomDescriptions);
+        var_dump($randomDescriptionsCount);
+        $randomShortdescriptions = file('random_short_descriptions.txt');
+        $randomShortdescriptionsCount = count($randomShortdescriptions);
+        var_dump($randomShortdescriptionsCount);
 
-        $data = array(
-            0 => array(
-                'name' => 'zlatý prsten Rytmuse',
-                'description' => 'Dara Rollins si ho moc přála.',
-                'short_description' => 'Bohužel ho nedostala.'
-            ),
-            1 => array(
-                'name' => 'Becherovka Miloše Zemana',
-                'description' => 'Flaška má 1 litr, zelenou barvu a originální víčko.',
-                'short_description' => 'Precizné ožužlaná flaška becherovky.'
-            ),
-        );
-
-        $randomProducts = file('radnom_products.txt');
-        $randomProductsCound = count($randomProducts);
-
-    for ($i=0; $i < 500; $i ++) {
+    for ($i=0; $i < $randomProductsCount; $i ++) {
+        $name = $randomProducts;
         $price = rand(100,60000) / 100;
+        $description = $randomDescriptions;
+        $short_description = $randomShortdescriptions;
         $weight = rand(1,50);
         $lenght = rand(20,200);
         $height = rand(5,40);
@@ -34,14 +30,12 @@
         VALUES ('%s', '%f', '%s', '%s', '%f', '%f', '%f', '%f');";
 
         $query = sprintf($sql,
-        $randomProducts[rand(0, $randomProductCount-1)], $product['name'], $price ,"" ,"" ,$weight ,$width ,$height ,$lenght
+        $randomProducts[rand(0, $randomProductsCount-1)], $price ,$randomDescriptions[rand(0, $randomDescriptionsCount-1)],  $randomShortdescriptions[rand(0, $randomShortdescriptionsCount-1)], $weight ,$width ,$height ,$lenght
         );
 
         echo $query . "<br>";
     
     }
-
-        
     ?>
 </body>
 </html>
